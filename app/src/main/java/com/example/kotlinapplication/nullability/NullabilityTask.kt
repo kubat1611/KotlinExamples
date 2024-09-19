@@ -3,8 +3,27 @@ package com.example.kotlinapplication.nullability
 data class Person(val name: String?, val age: Int?)
 
 fun printPersonInfo(person: Person?) {
+    if (person?.name == null){
+        println("Unknown name")
+    }
+    else{
+        println(person.name)
+    }
+
+    if (person?.age == null)
+    {
+        println("Age : Unknown")
+    }
+    else{
+        if (person.age <= 18){
+            println("${person.name} is underage")
+        }
+        else{
+            println(person.age)
+        }
+    }
+
     //TODO:
-    // 1. Wypisz imię osoby. W przypadku, kiedy jest nullem, wypisz domyślną wartość, np. "Unknown name"
     // 2. Sprawdź czy osoba jest dorosła, wypisz odpowiednią wiadomość na konsolę.
     // W przypadku, kiedy wiek jest nullem, wypisz "Age: Unknown"
 }
