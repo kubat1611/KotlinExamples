@@ -1,10 +1,33 @@
 package com.example.kotlinapplication.typechecks
 
+import com.example.kotlinapplication.extensions.capitalizeWords
+import kotlin.math.roundToInt
+
 fun main() {
     val mixedList: List<Any> = listOf(1, "hello", false, 3.14, 2, "world", 7.5, true)
 
     val resultList = mutableListOf<Any>()
 
+
+    fun TypeChecker () {
+        for (i in mixedList){
+            if (i is Int ) {
+                val modifiedInt = i * 2
+                resultList += modifiedInt
+            } else if (i is String){
+                val modifiedStr = i.capitalizeWords()
+                resultList += modifiedStr
+            } else if (i is Double) {
+                val modifiedDouble = i.roundToInt()
+                resultList += modifiedDouble
+            } else if (i is Boolean) {
+                resultList += i
+            }
+        }
+
+    }
+
+    TypeChecker()
     // TODO:
     // 1. Sprawdź typ elementu w liście.
     // Jeśli jest to Int, pomnóż go przez 2
