@@ -9,7 +9,7 @@ fun main() {
     val resultList = mutableListOf<Any>()
 
 
-    fun TypeChecker () {
+    fun typeChecker () {
         for (i in mixedList){
             if (i is Int ) {
                 val modifiedInt = i * 2
@@ -27,7 +27,7 @@ fun main() {
 
     }
 
-    TypeChecker()
+    typeChecker()
     // TODO:
     // 1. Sprawdź typ elementu w liście.
     // Jeśli jest to Int, pomnóż go przez 2
