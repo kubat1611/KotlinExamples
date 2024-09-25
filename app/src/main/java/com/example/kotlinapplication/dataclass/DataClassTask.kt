@@ -10,9 +10,21 @@ class ContactManager {
     // TODO:
     // 1. Znajdź kontakt z danym imieniem i zaktualizuj jego numer telefonu i e-mail
     // 2. Jeśli jest kilka takich kontaktów, zaktualizuj pierwszy
-    fun updateContact(name: String, newPhoneNumber: String, newEmail: String) {
 
+    fun updateContact(name: String, newPhoneNumber: String, newEmail: String) {
+        while (contacts.listIterator().hasNext()) {
+            val contact = contacts.listIterator().next()
+            if (contact.name == name) {
+                val updatedContact = contact.copy(
+                    phoneNumber = newPhoneNumber,
+                    email = newEmail
+                )
+                contacts.listIterator().set(updatedContact)
+            }
+        }
     }
+
+
 
     // TODO: Znajdź kontakt z podanym imieniem
     fun findContactsByName(name: String): List<Contact> {
@@ -31,6 +43,9 @@ class ContactManager {
 
     // TODO: Użyj domyślnej implementacji .toString() do wyświetlenia kontaktów
     fun printAllContacts() {
+        for (contact in contacts){
+            println(contact.toString())
+        }
     }
 }
 
