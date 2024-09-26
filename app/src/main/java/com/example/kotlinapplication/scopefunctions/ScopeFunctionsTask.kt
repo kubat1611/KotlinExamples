@@ -15,13 +15,22 @@ fun getUserById(id: Int): User? {
 // TODO: Wypisz id, imię i e-mail uźytkownika
 //  wykorzystaj scope function w taki sposób, żeby nie powtarzać nazwy obiektu
 private fun printUserDetails(user: User) {
-
+   user.let {
+        it.id
+        it.name
+        it.email
+        println(it)
+    }
 }
 
 // TODO: Zaktualizuj imię i e-mail użytkownika przypisując domyślne wartości
 // Wykorzystaj scope function w taki sposób, żeby nie powtarzać nazwy obiektu
 private fun updateUser(user: User) {
-
+    user.apply {
+        this.id = 0
+        this.name = "baltion"
+        this.email = "batlion@example.com"
+    }
 }
 
 fun main() {
@@ -29,8 +38,7 @@ fun main() {
 
     // TODO: Zrób refactor kodu w taki sposób, żeby nie wykorzystywać zmiennej pośredniej user i instrukcji if-else
     // Wykorzystaj do tego scope functions
-    val user = getUserById(userId)
-    if (user != null) {
+    getUserById(userId)?.let { user ->
         println("User found:")
         printUserDetails(user)
 
@@ -38,7 +46,7 @@ fun main() {
 
         println("Updated user:")
         printUserDetails(user)
-    } else {
+    } ?: run {
         println("User with ID $userId not found.")
     }
 }
