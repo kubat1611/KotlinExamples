@@ -1,7 +1,13 @@
 package com.example.kotlinapplication.ranges
 
 fun isPrime(number: Int): Boolean {
-    return true
+    if (number < 2) return false
+    for (i in 2..Math.sqrt(number.toDouble()).toInt()) {
+        if (number % i == 0) {
+            return false
+        }
+    }
+    return true  
 }
 
 fun printPrimesInRange(start: Int, end: Int) {
