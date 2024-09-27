@@ -17,6 +17,10 @@ fun main() {
     // 1. Odfiltruj ludzi, którzy są starsi niż wiek podany w ageThreshold
     // 2. Posortuj ich alfabetycznie po imieniu
     // 3. Wypisz wynikową listę
+
+   val old = people.filter { it.age > ageThreshold }
+    val sorted = old.sortedBy { it.name.lowercase() }
+
     println("People older than $ageThreshold, sorted by name:")
-    //    ...
+    println(sorted.toString())
 }
