@@ -1,7 +1,9 @@
 package com.example.kotlinapplication.inlineclassesandtypealias
 
+typealias pair = (Int, Int) -> Int
+
 // TODO: Wykorzystaj typealias dla parametru sumFunction
-fun calculateSum(x: Int, y: Int, sumFunction: (Int, Int) -> Int): Int {
+fun calculateSum(x: Int, y: Int, sumFunction : pair): Int {
     return sumFunction(x, y)
 }
 
@@ -11,7 +13,7 @@ fun sum(x: Int, y: Int): Int {
 
 
 fun main() {
-    val sumFunction: (Int, Int) -> Int = { a, b -> a + b }
+    val sumFunction: pair = { a, b -> a + b }
 
     val result = calculateSum(10, 20, sumFunction)
     println("The sum is: $result")
