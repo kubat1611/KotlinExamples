@@ -3,12 +3,12 @@ package com.example.kotlinapplication.inlinefunctions
 // TODO: Zmodyfikuj funkcję w taki sposób, żeby pozbyć się błędu
 inline fun executeOperationsWithNoinline(
     operation1: () -> Unit,
-    operation2: () -> Unit
+    noinline operation2: () -> Unit
 ) {
     println("Starting operations...")
     operation1()
     // TODO: Odkomentuj
-//    passToAnotherFunction(operation2)
+    passToAnotherFunction(operation2)
     println("Operations complete.")
 }
 
@@ -18,13 +18,13 @@ fun passToAnotherFunction(operation: () -> Unit) {
 }
 
 // TODO: Zmodyfikuj funckję w taki sposób, żeby pozbyć się błędu
-inline fun <T> checkType(value: Any) {
+inline fun <reified T> checkType(value: Any) {
     // TODO: Odkomentuj
-//    if (value is T) {
-//        println("The value is of type ${T::class.simpleName}")
-//    } else {
-//        println("The value is NOT of type ${T::class.simpleName}")
-//    }
+    if (value is T) {
+        println("The value is of type ${T::class.simpleName}")
+    } else {
+        println("The value is NOT of type ${T::class.simpleName}")
+    }
 }
 
 
