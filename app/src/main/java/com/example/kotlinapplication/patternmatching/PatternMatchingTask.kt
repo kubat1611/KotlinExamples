@@ -9,7 +9,15 @@ package com.example.kotlinapplication.patternmatching
 // - lista zawiera liczbę 0
 // - lista zawiera zarówno waartości dodatnie jak i ujemne
 private fun analyzeList(numbers: List<Int>): String {
-    return ""
+    return when {
+        numbers.isEmpty() -> "List is empty"
+        numbers.all { it > 0 } -> "All numbers are positive"
+        numbers.all {it < 0} -> "All numbers are negative"
+        numbers.contains(0) -> "The list contains a 0"
+        else -> "List contains both negative and positive numbers"
+
+
+    }
 }
 
 fun main() {

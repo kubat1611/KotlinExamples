@@ -9,11 +9,25 @@ import java.util.Scanner
 // - Od 50 do 100 - 5%
 // - Od 100 do 500 - 10%
 // - Powyżej 500 - 15%
-private fun getDiscountPercentage(amount: Double): Double = 0.0
 
-private fun getDiscountAmount(amount: Double, discountPercentage: Double) = 0.0
 
-private fun getFinalPrice(amount: Double, discountAmount: Double) = 0.0
+private fun getDiscountPercentage(amount: Double): Double {
+    return when {
+        amount < 50 -> 0.0
+        amount in 50.0..99.99 -> 0.05
+        amount in 100.0..500.0 -> 0.1
+        else -> 0.15
+    }
+}
+
+private fun getDiscountAmount(amount: Double, discountPercentage: Double) : Double {
+    return amount * discountPercentage
+}
+
+private fun getFinalPrice(amount: Double, discountAmount: Double) : Double{
+    return amount - discountAmount
+}
+
 
 fun main() {
     val scanner = Scanner(System.`in`)
