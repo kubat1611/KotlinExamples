@@ -9,23 +9,42 @@ package com.example.kotlinapplication.enums
 // Użytkownik może wykonać akcję, jeśli zawiera "view data"
 // Gość nie może wykonań żadnej akcji
 
+
+enum class UserRole{
+    Admin{
+        override fun canPerformAction(action: String): Boolean {
+            return action == "delete data" || action == "view data"
+        }
+      },
+
+    User{
+        override fun canPerformAction(action: String): Boolean {
+            return action == "view data"
+        }
+    },
+    Guest{
+        override fun canPerformAction(action: String): Boolean = false
+    };
+    abstract fun canPerformAction(action: String): Boolean
+}
+
 // TODO: Odkomentuj
-//fun performAction(role: UserRole, action: String): String {
-//    return if (role.canPerformAction(action)) {
-//        "${role.name} can perform action: $action"
-//    } else {
-//        "${role.name} cannot perform action: $action"
-//    }
-//}
+fun performAction(role: UserRole, action: String): String {
+    return if (role.canPerformAction(action)) {
+        "${role.name} can perform action: $action"
+    } else {
+        "${role.name} cannot perform action: $action"
+    }
+}
 
 fun main() {
-//    val admin = UserRole.Admin
-//    val user = UserRole.User
-//    val guest = UserRole.Guest
+    val admin = UserRole.Admin
+    val user = UserRole.User
+    val guest = UserRole.Guest
 
-//    println(performAction(admin, "delete data"))
-//    println(performAction(admin, "view data"))
-//    println(performAction(user, "delete data"))
-//    println(performAction(user, "view data"))
-//    println(performAction(guest, "view data"))
+    println(performAction(admin, "delete data"))
+    println(performAction(admin, "view data"))
+    println(performAction(user, "delete data"))
+    println(performAction(user, "view data"))
+    println(performAction(guest, "view data"))
 }
